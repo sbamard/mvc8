@@ -1,0 +1,70 @@
+/*# Empty CSS file for your own CSS*/
+
+
+.navbar{
+
+    background-color: black;
+	padding:1px;
+
+}
+
+a.nav-color{
+
+	color:white !important;
+}
+
+a.nav-color:hover{
+
+    color:#999 !important;
+}
+
+.space{
+
+    padding-top: 65px;
+
+}
+
+.navbar-default .navbar-nav > .active > a{
+
+    background-color: #9e0a0f !important;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover{
+
+	background-color: #9e0a0f !important;
+	border-top-color: #337ab7;
+	border-right-color: #337ab7;
+	border-bottom-color: #337ab7;
+	border-left-color: #337ab7;
+}
+
+.dropdown-menu > li > a:hover{
+
+	font-weight: bold;
+
+}
+
+form {
+	display:inline;
+}
+
+.pos-messageErreur{
+	width:97%;
+	background-color: #ffcccc;
+	color:#ff3333;
+	border : 1px solid #f99;
+	margin:auto;
+	margin-bottom: 20px;
+	text-align:center;
+}
+
+.pos-message{
+	width:97%;
+	background-color: #ccffcc;
+	color:#28a745;
+	border : 1px solid #9f9;
+	margin:auto;
+	margin-bottom: 20px;
+	text-align:center;
+}
+
