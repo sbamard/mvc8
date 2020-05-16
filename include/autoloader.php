@@ -5,16 +5,19 @@
  *
  * @author tvosgiens
  */
-class Autoloader {
+class Autoloader
+{
 
     //put your code here
 
-    public static function inscrire() {
+    public static function inscrire()
+    {
 
         spl_autoload_register(array(__CLASS__, 'autoload'));
     }
 
-    public static function autoload($maClasse) {
+    public static function autoload($maClasse)
+    {
         // $maClasse accepte le nom de la classe : accueil (routeur du module accueil),
         // Reunion (routeur, controleur, modele,...)
         $chemins = array(
@@ -33,7 +36,11 @@ class Autoloader {
             './mod_authentification/',
             './mod_authentification/controleur/',
             './mod_authentification/modele/',
-            './mod_authentification/vue/'
+            './mod_authentification/vue/',
+            'mod_reunion/',
+            'mod_reunion/controleur/',
+            'mod_reunion/modele/',
+            'mod_reunion/vue/'
         );
 
         foreach ($chemins as $chemin) {

@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="nav-color" href="#">Réunions</a>
+                        <a class="nav-color" href="index.php?gestion=reunion">Réunions</a>
                     </li>
                     <li>
                         <a class="nav-color" href="#">Entretiens</a>
