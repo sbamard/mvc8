@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ba7a0975-eff9-42cb-b80d-fb49f1613a74" name="plesk mvc8" url="http://simonbamard.fr">
+        <fileTransfer rootFolder="/httpdocs/mvc8" host="simonbamard.fr" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

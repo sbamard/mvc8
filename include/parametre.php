@@ -1,10 +1,10 @@
 <?php
 
 //Pour la connexion à la BD
-define('NOM', 'root');
-define('PASSE', 'root');
+define('NOM', 'sbamard_');
+define('PASSE', 'RyuHayabusa13@&');
 define('SERVEUR', 'localhost');
-define('BASE', 'db_coopemploi');
+define('BASE', 'mvc');
 
 // Lecture des tables
 define('P', "x19v_");

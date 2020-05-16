@@ -15,7 +15,7 @@ class Autoloader {
     }
 
     public static function autoload($maClasse) {
-        // $maClasse accepte le nom de la classe : Accueil (routeur du module accueil),
+        // $maClasse accepte le nom de la classe : accueil (routeur du module accueil),
         // Reunion (routeur, controleur, modele,...)
         $chemins = array(
             'mod_accueil/',
@@ -30,10 +30,10 @@ class Autoloader {
             'mod_accompagnateur/controleur/',
             'mod_accompagnateur/modele/',
             'mod_accompagnateur/vue/',
-            'mod_authentification/',
-            'mod_authentification/controleur/',
-            'mod_authentification/modele/',
-            'mod_authentification/vue/'
+            './mod_authentification/',
+            './mod_authentification/controleur/',
+            './mod_authentification/modele/',
+            './mod_authentification/vue/'
         );
 
         foreach ($chemins as $chemin) {

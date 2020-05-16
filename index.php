@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once('include/configuration.php');
+require_once('./include/configuration.php');
 
 /**
  * Classe statique Autoloader, execute la méthode inscrire

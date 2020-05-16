@@ -97,7 +97,7 @@ class AccompagnateurVue {
         }
 
 
-        $this->tpl->display('mod_accompagnateur/vue/AccompagnateurFicheVue.tpl');
+        $this->tpl->display('mod_accompagnateur/vue/accompagnateurFicheVue.tpl');
 
         //Fin méthode
     }

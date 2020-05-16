@@ -39,7 +39,7 @@ class LieuVue {
 
 		$this->tpl->assign('listeLieux', $this->valeurs);
 
-		$this->tpl->display('mod_lieu/vue/lieuListeVue.tpl');
+		$this->tpl->display('mod_lieu/vue/LieuListeVue.tpl');
 	}
 
 	public function genererAffichageFiche($valeurs) {
@@ -102,7 +102,7 @@ class LieuVue {
 		}
 
 
-		$this->tpl->display('mod_lieu/vue/lieuFicheVue.tpl');
+		$this->tpl->display('mod_lieu/vue/LieuFicheVue.tpl');
 
 		//Fin méthode
 	}
