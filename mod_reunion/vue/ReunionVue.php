@@ -19,7 +19,7 @@ class ReunionVue {
 
         $this->tpl->assign('deconnexion', 'Déconnexion');
 
-        $this->tpl->assign('piedPage', 'Exercice PHP MVC réalisé avec un moteur de templates');
+        $this->tpl->assign('piedPage', 'Exercice PHP MVC réalisé by Simon :)');
     }
 
     public function genererAffichageListe($valeurs) {
@@ -28,7 +28,7 @@ class ReunionVue {
 
         $this->chargementValeurs();
 
-        $this->tpl->assign('titreGestion', 'Liste des réunions');
+        $this->tpl->assign('titreGestion', 'Liste des réunions d\'information collective ');
 
         $this->tpl->assign('message', /* ReunionTable::getMessageSucces() */ '');
 
@@ -60,7 +60,7 @@ class ReunionVue {
             case 'form_ajouter':
             case 'ajouter':
 
-                $this->tpl->assign('titreGestion', 'Création d\'une réunion');
+                $this->tpl->assign('titreGestion', 'Création d\'une réunion ');
 
                 $this->tpl->assign('action', 'ajouter');
 
@@ -73,7 +73,7 @@ class ReunionVue {
             case 'form_modifier':
             case 'modifier':
 
-                $this->tpl->assign('titreGestion', 'Modification d\'un reunion');
+                $this->tpl->assign('titreGestion', 'Modification d\'une réunion');
 
                 $this->tpl->assign('action', 'modifier');
 
@@ -85,7 +85,7 @@ class ReunionVue {
 
             case 'form_supprimer':
 
-                $this->tpl->assign('titreGestion', 'Suppression d\'un reunion');
+                $this->tpl->assign('titreGestion', 'Suppression d\'une réunion');
 
                 $this->tpl->assign('action', 'supprimer');
 
