@@ -8,11 +8,17 @@ class ReunionTable
     private $reu_dat = "";
     private $reu_heu = "";
     private $reu_dur = "";
-    private $reu_lie = "";
     private $reu_cap = "";
     private $reu_pre = "";
-    private $reu_acc = "";
     private $reu_pub = "";
+    private $reu_nbr = "";
+
+    private $acc_ide = "";
+    private $acc_nom = "";
+
+    private $lie_ide = "";
+    private $lie_nom = "";
+
     private $autorisationBD = true;
     private static $messageErreur = "";
     private static $messageSucces = "";
@@ -64,11 +70,6 @@ class ReunionTable
         return $this->reu_dur;
     }
 
-    function getReu_lie()
-    {
-        return $this->reu_lie;
-    }
-
     function getReu_cap()
     {
         return $this->reu_cap;
@@ -79,14 +80,30 @@ class ReunionTable
         return $this->reu_pre;
     }
 
-    function getReu_acc()
-    {
-        return $this->reu_acc;
-    }
-
     function getReu_pub()
     {
         return $this->reu_pub;
+    }
+
+    function getAcc_ide()
+    {
+        return $this->acc_ide;
+    }
+    function getAcc_nom()
+    {
+        return $this->acc_nom;
+    }
+    function getLie_ide()
+    {
+        return $this->lie_ide;
+    }
+    function getLie_nom()
+    {
+        return $this->lie_nom;
+    }
+    function getReu_nbr()
+    {
+        return $this->reu_nbr;
     }
 
     // =========== SETTERS =================
@@ -108,8 +125,12 @@ class ReunionTable
 
     function setReu_heu($reu_heu)
     {
-        if (empty($reu_heu)) {
-            self::setMessageErreur("L'heure de début est invalide'");
+        if (empty($reu_heu) || $reu_heu < 6 ) {
+            self::setMessageErreur("Il est trop tôt !");
+            $this->setAutorisationBD(false);
+        }
+        elseif (empty($reu_heu) || $reu_heu > 19 ) {
+            self::setMessageErreur("Il est trop tard !");
             $this->setAutorisationBD(false);
         }
         $this->reu_heu = $reu_heu;
@@ -117,24 +138,33 @@ class ReunionTable
 
     function setReu_dur($reu_dur)
     {
-        if (empty($reu_dur)) {
-            self::setMessageErreur("La durée prévisible est invalide");
+        if (empty($reu_dur) || $reu_dur > 3) {
+            self::setMessageErreur("La réunion est trop longue");
             $this->setAutorisationBD(false);
         }
         $this->reu_dur = $reu_dur;
     }
 
-    function setReu_lie($reu_lie)
+    function setLie_ide($lie_ide)
     {
-        if (!is_string($reu_lie) || ctype_space($reu_lie) || empty($reu_lie)) {
+        $this->lie_ide = $lie_ide;
+    }
+    function setLie_nom($lie_nom)
+    {
+        if (!is_string($lie_nom) || ctype_space($lie_nom) || empty($lie_nom)) {
             self::setMessageErreur("Le lieu est invalide");
             $this->setAutorisationBD(false);
         }
-        $this->reu_lie = $reu_lie;
+        $this->lie_nom = $lie_nom;
     }
 
     function setReu_cap($reu_cap)
     {
+        if (empty($reu_cap) || $reu_cap > 300 || $reu_cap < 0) {
+            self::setMessageErreur("La salle ne convient pas");
+            $this->setAutorisationBD(false);
+        }
+
         $this->reu_cap = $reu_cap;
     }
 
@@ -143,14 +173,31 @@ class ReunionTable
         $this->reu_pre = $reu_pre;
     }
 
-    function setReu_acc($reu_acc)
+    function setAcc_ide($acc_ide)
     {
-        $this->acc_ide = $reu_acc;
+        $this->acc_ide = $acc_ide;
+    }
+
+    function setAcc_nom($acc_nom)
+    {
+        if ($acc_nom != $this->acc_nom) {
+            self::setMessageErreur("Cet accompagnateur n'existe pas");
+            $this->setAutorisationBD(false);
+        }
+        $this->acc_nom = $acc_nom;
     }
 
     function setReu_pub($reu_pub)
     {
         $this->reu_pub = $reu_pub;
+    }
+    function setReu_nbr($reu_nbr)
+    {
+        if ($reu_nbr > $this->reu_cap) {
+            self::setMessageErreur("Capacité maximale atteinte");
+            $this->setAutorisationBD(false);
+        }
+        $this->reu_nbr = $reu_nbr;
     }
 
     /*     * *************AutorisationBD****************** */

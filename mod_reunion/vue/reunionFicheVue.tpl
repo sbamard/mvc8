@@ -49,7 +49,6 @@
 
                 <input type="hidden" name="gestion" value="reunion">
                 <input type="hidden" name="action" value="{$action}">
-                <input type="hidden" id="acc_mpa" name="acc_mpa" type="text" value="">
 
 
                 {if $action neq 'ajouter'}
@@ -78,8 +77,8 @@
                 </div>
                 <div class="form-group">
                     Lieu de la réunion <sup>(*)</sup> :
-                    <input class="form-control" id="reu_lie" name="reu_lie" type="text"
-                           value="{$unReunion->getReu_lie()}" {$comportement} required="required">
+                    <input class="form-control" id="lie_nom" name="lie_nom" type="text"
+                           value="{$unReunion->getLie_nom()}" {$comportement} required="required">
                 </div>
                 <div class="form-group">
                     Capacité inscription :
@@ -94,13 +93,18 @@
                 </div>
                 <div class="form-group">
                     Accompagnateur présent :
-                    <input class="form-control" id="reu_acc" name="reu_acc" type="text"
-                           value="{$unReunion->getReu_acc()}" {$comportement} >
+                    <input class="form-control" id="acc_nom" name="acc_nom" type="text"
+                           value="{$unReunion->getAcc_nom()}" {$comportement} >
                 </div>
                 <div class="form-group">
                     Publié :
                     <input class="form-control" id="reu_pub" name="reu_pub" type="boolean"
                            value="{$unReunion->getReu_pub()}" {$comportement} >
+                </div>
+                <div class="form-group">
+                    Nombre d'inscrit(s) :
+                    <input class="form-control" id="reu_nbr" name="reu_nbr" type="number"
+                           value="{$unReunion->getReu_nbr()}" {$comportement} >
                 </div>
 
                 <div class="form-group">
@@ -122,7 +126,6 @@
 
         </div>
     </div>
-    <pre> {var_dump($unReunion)} </pre>
     {include file='public/piedPage.tpl'}
 
 </div>

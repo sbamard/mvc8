@@ -11,47 +11,45 @@ class ReunionModele extends Modele
         $this->parametre = $parametre;
     }
 
+
     public function getListeReunions()
     {
-
-        //Requête attendue de type SELECT (liste des lieux)
-        $sql = "SELECT * FROM " . P . "reunion";
-
+        $sql = "SELECT * FROM " . P . "reunion, " . P . "accompagnateur, " . P . "lieu WHERE " . P . "reunion.lie_ide = " . P . "lieu.lie_ide 
+        AND " . P . "reunion.acc_ide = " . P . "accompagnateur.acc_ide";
         $idRequete = $this->executeQuery($sql);
-
         return $idRequete->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function getUnReunion()
     {
-
-        //Requête attendue de type SELECT (un seul lieu)
-        $sql = "SELECT * FROM " . P . "reunion WHERE reu_ide = ?";
-
+        $sql = "SELECT *  FROM " . P . "reunion, " . P . "accompagnateur, " . P . "lieu 
+          WHERE " . P . "reunion.lie_ide = " . P . "lieu.lie_ide  AND " . P . "reunion.acc_ide = " . P . "accompagnateur.acc_ide AND reu_ide = ?";
         $idRequete = $this->executeQuery($sql, array($this->parametre['reu_ide']));
-
-        //var_dump($idRequete->fetch());
         $reunion = new ReunionTable($idRequete->fetch());
-
         return $reunion;
     }
+
 
     public function addReunion(ReunionTable $valeurs)
     {
         // Requête de type Insert (création)
-        $sql = "INSERT INTO " . P . "reunion (reu_dat, reu_heu, reu_dur, reu_lie, "
-            . "   reu_cap, reu_pre, reu_acc, reu_pub"
-            . " VALUES (?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO " . P . "reunion (reu_dat, reu_heu, reu_dur, reu_cap, reu_pre, "
+            . "reu_pub, reu_nbr, lie_ide, acc_ide) "
+            . "VALUES (?,?,?,?,?,?,?, "
+            . "(SELECT lie_ide FROM " . P . "lieu WHERE lie_nom = ?), "
+            . "(SELECT acc_ide FROM " . P . "accompagnateur WHERE acc_nom = ?))";
 
         $idRequete = $this->executeQuery($sql, array(
             $valeurs->getReu_dat(),
             $valeurs->getReu_heu(),
             $valeurs->getReu_dur(),
-            $valeurs->getReu_lie(),
             $valeurs->getReu_cap(),
             $valeurs->getReu_pre(),
-            $valeurs->getReu_acc(),
             $valeurs->getReu_pub(),
+            $valeurs->getReu_nbr(),
+            $valeurs->getLie_nom(),
+            $valeurs->getAcc_nom()
+
         ));
 
         if ($idRequete) {
@@ -61,18 +59,25 @@ class ReunionModele extends Modele
 
     public function editReunion(ReunionTable $valeurs)
     {
-        // Requête de type Insert (création)
-        $sql = "UPDATE " . P . "reunion SET reu_date = ?, reu_lie = ?, reu_acc = ?, reu_pub WHERE reu_ide = ?";
-
+        $sql = "UPDATE " . P . "reunion SET reu_dat = ?, reu_heu = ?, reu_dur = ?, "
+            . "reu_cap = ?, reu_pre = ?, reu_pub = ?, reu_nbr = ?, "
+            . "lie_ide = (SELECT " . P . "lieu.lie_ide FROM " . P . "lieu WHERE " . P . "lieu.lie_nom = ?), "
+            . "acc_ide = (SELECT " . P . "accompagnateur.acc_ide FROM " . P . "accompagnateur WHERE " . P . "accompagnateur.acc_nom = ?) "
+            . "WHERE reu_ide = ?";
 
         $idRequete = $this->executeQuery($sql, array(
-            $valeurs->getReu_ide(),
             $valeurs->getReu_dat(),
-            $valeurs->getReu_lie(),
-            $valeurs->getReu_acc(),
-            $valeurs->getReu_pub()
-        ));
+            $valeurs->getReu_heu(),
+            $valeurs->getReu_dur(),
+            $valeurs->getReu_cap(),
+            $valeurs->getReu_pre(),
+            $valeurs->getReu_pub(),
+            $valeurs->getReu_nbr(),
+            $valeurs->getLie_nom(),
+            $valeurs->getAcc_nom(),
+            $valeurs->getReu_ide()
 
+        ));
         if ($idRequete) {
             ReunionTable::setMessageSucces("Modification effectuée avec succès !");
         }

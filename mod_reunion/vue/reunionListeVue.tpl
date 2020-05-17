@@ -95,17 +95,17 @@
                             {$reunion.reu_dat}
                         </td>
                         <td>
-                            {$reunion.reu_lie}
+                            {$reunion.lie_nom}
                         </td>
                         <td>
-                            {$reunion.reu_acc}
+                            {$reunion.acc_nom}
                         </td>
                         <td>
                             {$reunion.reu_pub}
                         </td>
                         <td>
                             <form action='index.php' method='post'>
-                                <input type='hidden' name='acc_ide' value='{$reunion.reu_ide}'>
+                                <input type='hidden' name='reu_ide' value='{$reunion.reu_ide}'>
                                 <input type='hidden' name='gestion' value='reunion'>
                                 <input type='hidden' name='action' value='form_consulter'>
 
@@ -113,7 +113,7 @@
                             </form>
 
                             <form action='index.php' method='post'>
-                                <input type='hidden' name='acc_ide' value='{$reunion.reu_ide}'>
+                                <input type='hidden' name='reu_ide' value='{$reunion.reu_ide}'>
                                 <input type='hidden' name='gestion' value='reunion'>
                                 <input type='hidden' name='action' value='form_modifier'>
 
@@ -121,7 +121,7 @@
                             </form>
 
                             <form action='index.php' method='post'>
-                                <input type='hidden' name='acc_ide' value='{$reunion.reu_ide}'>
+                                <input type='hidden' name='reu_ide' value='{$reunion.reu_ide}'>
                                 <input type='hidden' name='gestion' value='reunion'>
                                 <input type='hidden' name='action' value='form_supprimer'>
 
@@ -139,7 +139,7 @@
             </table>
         </div>
     </div>
-
+    <
     {include file='public/piedPage.tpl'}
 
 </div>
