@@ -39,19 +39,19 @@ class ReunionModele extends Modele
     public function addReunion(ReunionTable $valeurs)
     {
         // Requête de type Insert (création)
-        $sql = "INSERT INTO " . P . "reunion (reu_dat, reu_lie, reu_acc, reu_pub"
-            . " VALUES (?,?,?,?)";
+        $sql = "INSERT INTO " . P . "reunion (reu_dat, reu_heu, reu_dur, reu_lie, "
+            . "   reu_cap, reu_pre, reu_acc, reu_pub"
+            . " VALUES (?,?,?,?,?,?,?,?)";
 
         $idRequete = $this->executeQuery($sql, array(
-            $valeurs->getReu_ide(),
             $valeurs->getReu_dat(),
-            $valeurs->getReu_lie(),
-            $valeurs->getReu_acc(),
-            $valeurs->getReu_pub(),
             $valeurs->getReu_heu(),
             $valeurs->getReu_dur(),
+            $valeurs->getReu_lie(),
             $valeurs->getReu_cap(),
             $valeurs->getReu_pre(),
+            $valeurs->getReu_acc(),
+            $valeurs->getReu_pub(),
         ));
 
         if ($idRequete) {

@@ -97,77 +97,60 @@ class ReunionTable
         $this->reu_ide = $reu_ide;
     }
 
-    function setAcc_nom($acc_nom)
+    function setReu_dat($reu_dat)
     {
-
-        if (!is_string($acc_nom) || ctype_space($acc_nom) || empty($acc_nom)) {
-            self::setMessageErreur("Le nom est invalide");
+        if (empty($reu_dat)) {
+            self::setMessageErreur("La date est invalide");
             $this->setAutorisationBD(false);
         }
-
-        $this->acc_nom = $acc_nom;
+        $this->reu_dat = $reu_dat;
     }
 
-    function setAcc_pre($acc_pre)
+    function setReu_heu($reu_heu)
     {
-
-        if (!is_string($acc_pre) || ctype_space($acc_pre) || empty($acc_pre)) {
-            self::setMessageErreur("Le prénom est invalide");
+        if (empty($reu_heu)) {
+            self::setMessageErreur("L'heure de début est invalide'");
             $this->setAutorisationBD(false);
         }
-
-        $this->acc_pre = $acc_pre;
+        $this->reu_heu = $reu_heu;
     }
 
-    function setAcc_tel($acc_tel)
+    function setReu_dur($reu_dur)
     {
-
-        if (ctype_space($acc_tel) || empty($acc_tel)) {
-            self::setMessageErreur("Le téléphone est invalide");
+        if (empty($reu_dur)) {
+            self::setMessageErreur("La durée prévisible est invalide");
             $this->setAutorisationBD(false);
         }
-
-        $this->acc_tel = $acc_tel;
+        $this->reu_dur = $reu_dur;
     }
 
-    function setAcc_mai($acc_mai)
+    function setReu_lie($reu_lie)
     {
-
-        if (!is_string($acc_mai) || ctype_space($acc_mai) || empty($acc_mai)) {
-            self::setMessageErreur("L'adresse mail semble invalide");
+        if (!is_string($reu_lie) || ctype_space($reu_lie) || empty($reu_lie)) {
+            self::setMessageErreur("Le lieu est invalide");
             $this->setAutorisationBD(false);
         }
-
-        $this->acc_mai = $acc_mai;
+        $this->reu_lie = $reu_lie;
     }
 
-    function setAcc_spe($acc_spe)
+    function setReu_cap($reu_cap)
     {
-
-        $this->acc_spe = $acc_spe;
+        $this->reu_cap = $reu_cap;
     }
 
-    function setAcc_log($acc_log)
+    function setReu_pre($reu_pre)
     {
-
-        if (!is_string($acc_log) || ctype_space($acc_log) || empty($acc_log)) {
-            self::setMessageErreur("Le login est invalide");
-            $this->setAutorisationBD(false);
-        }
-
-        $this->acc_log = $acc_log;
+        $this->reu_pre = $reu_pre;
     }
 
-    function setAcc_mpa()
+    function setReu_acc($reu_acc)
     {
+        $this->acc_ide = $reu_acc;
+    }
 
-        $pw = $this->acc_mpa;
-        //technique du salade /
-        //définir une variable à gauche et à droite
-        $gauche = 'ar30&y%';
-        $droite = 'tk!@';
-
-        $this->acc_mpa = hash('ripemd128', "$gauche$pw$droite");
+    function setReu_pub($reu_pub)
+    {
+        $this->reu_pub = $reu_pub;
     }
 
     /*     * *************AutorisationBD****************** */

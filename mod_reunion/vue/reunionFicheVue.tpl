@@ -122,7 +122,7 @@
 
         </div>
     </div>
-
+    <pre> {var_dump($unReunion)} </pre>
     {include file='public/piedPage.tpl'}
 
 </div>
